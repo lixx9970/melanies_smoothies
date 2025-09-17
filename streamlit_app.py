@@ -15,8 +15,6 @@ st.write(
 name_on_order = st.text_input("Name on Smoothie:")
 st.write("The name on your Smoothie will be:", name_on_order)
 
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response)
 
 cnx = st.connection("snowflake")
 session = cnx.session()
@@ -51,3 +49,6 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
 
         st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
+
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
